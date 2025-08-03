@@ -1,7 +1,10 @@
 <template>
   <div class="ctr">
-    <questions></questions>
-    <result></result>
+    <questions
+      v-if="questionsAnswered < questions.length"
+      :questions="questions"
+    />
+    <result v-else></result>
     <button type="button" class="reset-btn">Reset</button>
   </div>
 </template>
@@ -14,6 +17,7 @@ export default {
   name: 'App',
   data() {
     return {
+      questionsAnswered: 0,
       questions: [
         {
           q: 'What is 2 + 2?',
